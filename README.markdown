@@ -9,15 +9,14 @@ To summarize, the install script will:
 * Back up any existing dotfiles in your home directory to ~/dotfiles_old/
 * Create symlinks to the dotfiles in ~/dotstrap/ in your home directory
 
-## Future Development
+## Future Developement
+
+* I should figure out a way to make .screenrc specify different control keys depending on whether the system is "first tier" or "second tier" in my screen layout, probably indicated by the presence or absence of ~/.screen_tier_2. See [this](http://unix.stackexchange.com/questions/21523/how-can-i-automatically-run-a-script-inside-screen-if-the-script-is-not-in-path), possibly; 
+* Currently, the control character specified by .screenrc is Ctrl-W ("escape ^Ww"), to accommodate second-tier screen systems. The first-tier system must be manually changed to Ctrl-A.
+
+## These features have been added (and should be documented properly)
 
 * Currently the install script has a list of dotfiles to be used (backed up and symlinked); this list must be manually updated every time a dotfile is added to or removed from the repo. I would prefer to instead have a list of *excluded* files (.*, makesymlinks.sh, README.md, and LICENSE) and automatically use all files in the repo that aren't excluded.
 * If the install script is run twice on the same account, it will overwrite the backups in ~/dotfiles_old/ with symlinks. The backup routine should ignore symlinks instead.
 * If there is nothing to back up (all prospective back-up targets are either symlinks or nonexistent), ~/dotfiles_old/ should not be created.
-* Tangentially, I should figure out a way to make .screenrc specify different escape keys depending on whether the system is "first tier" or "second tier" in my screen layout, probably indicated by the presence or absence of ~/.screen_tier_2. See [this](http://unix.stackexchange.com/questions/21523/how-can-i-automatically-run-a-script-inside-screen-if-the-script-is-not-in-path), possibly.
 
-### Some pseudocode
-
-For each file FOO in the repo (and not dotted or on the exclusion list):
-* Look for an "oldfile"  ~/.FOO. If "oldfile" exists and is not a symlink, create ~/dotfiles_old/ and move ~/.FOO there (possibly stripping the leading dot?).
-* Make ~/.FOO a symlink to FOO.

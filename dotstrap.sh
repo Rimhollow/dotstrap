@@ -1,31 +1,24 @@
 #!/bin/bash
-############################
-# .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
-############################
 
-########## Variables
+SOURCE_DIR=~/dotstrap
+BACKUP_DIR=~/dotfiles_old
+EXCLUDED_FILES=("dotstrap.sh" "README.markdown" "LICENSE" )
+# All hidden/dotted files are automatically excluded by the ls command line below.
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="vimrc screenrc"            # list of files/folders to symlink in homedir
+for FILE in `ls $SOURCE_DIR`                  # For all files in the source dir...
+do
+  if ! [[ ${EXCLUDED_FILES[*]} =~ $FILE ]]    # that are not explicitly excluded:
+  then
+    SOURCE=$SOURCE_DIR/$FILE
+    DESTINATION=~/.$FILE
+    if [ -f $DESTINATION ] && ! [ -h $DESTINATION ];
+    then   # if there is a matching dotfile in the home dir, and it is NOT a symlink...
+      echo "Backing up $DESTINATION to $BACKUP_DIR..."
+      mkdir -p $BACKUP_DIR        # create the backup directory if needed, and...
+      mv $DESTINATION $BACKUP_DIR # move the dotfile to the backup directory.
+    fi
 
-##########
-
-# create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
-mkdir -p $olddir
-echo "done"
-
-# change to the dotfiles directory
-echo -n "Changing to the $dir directory ..."
-cd $dir
-echo "done"
-
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    echo "Symlinking $DESTINATION to $SOURCE..."
+    ln -sf $SOURCE $DESTINATION  # Create a symlink to the source file.
+  fi
 done

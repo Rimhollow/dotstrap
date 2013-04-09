@@ -49,7 +49,7 @@ bind K kill
 bind I login on
 bind O login off
 bind } history
-escape ^Aa
+escape ^Ww
 #
 #bindkey -d -k kb stuff "\010"
 #bindkey -d -k kb
