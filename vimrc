@@ -1,5 +1,6 @@
 syntax enable             " enable syntax highlighting (previously syntax on).
 set ruler                 " Always show info along bottom.
+set laststatus=2          " Always show file name along bottom.
 set nohlsearch            " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 
@@ -8,3 +9,5 @@ set tabstop=2             " tab spacing
 set shiftwidth=2          " indent/outdent by 2 columns
 set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab             " use spaces instead of tabs
+
+
