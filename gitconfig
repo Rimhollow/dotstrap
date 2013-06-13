@@ -1,4 +1,7 @@
+[user]
+  name = "Robert Holland"
+  email = "rmholl0@uky.edu"
 [color]
-        diff = auto
-        status = auto
-        branch = auto
+  diff = auto
+  status = auto
+  branch = auto
