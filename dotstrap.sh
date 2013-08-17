@@ -19,6 +19,6 @@ do
     fi
 
     echo "Symlinking $DESTINATION to $SOURCE..."
-    ln -sf $SOURCE $DESTINATION  # Create a symlink to the source file.
+    ln -sfT $SOURCE $DESTINATION  # Create a symlink to the source file.
   fi
 done
