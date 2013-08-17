@@ -11,7 +11,7 @@ do
   then
     SOURCE=$SOURCE_DIR/$FILE
     DESTINATION=~/.$FILE
-    if [ -f $DESTINATION ] && ! [ -h $DESTINATION ];
+    if [ -a $DESTINATION ] && ! [ -h $DESTINATION ];
     then   # if there is a matching dotfile in the home dir, and it is NOT a symlink...
       echo "Backing up $DESTINATION to $BACKUP_DIR..."
       mkdir -p $BACKUP_DIR        # create the backup directory if needed, and...
