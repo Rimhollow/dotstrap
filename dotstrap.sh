@@ -2,7 +2,7 @@
 
 SOURCE_DIR=~/dotstrap
 BACKUP_DIR=~/dotfiles_old
-EXCLUDED_FILES=("dotstrap.sh" "README.markdown" "LICENSE" )
+EXCLUDED_FILES=("dotstrap.sh" "dotstrap_setup.sh" "README.markdown" "LICENSE" )
 # All hidden/dotted files are automatically excluded by the ls command line below.
 
 for FILE in `ls $SOURCE_DIR`                  # For all files in the source dir...
@@ -22,3 +22,6 @@ do
     ln -sfT $SOURCE $DESTINATION  # Create a symlink to the source file.
   fi
 done
+
+# Perform any additional tasks needed to make the new dotfiles work correctly.
+$SOURCE_DIR/dotstrap_setup.sh
