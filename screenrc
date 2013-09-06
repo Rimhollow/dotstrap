@@ -49,8 +49,21 @@ bind K kill
 bind I login on
 bind O login off
 bind } history
-escape ^Ww
-#
+escape ^Aa
+
+# Reload the .screenrc file when <command key> Shift-R is pressed
+bind R eval "source $HOME/.screenrc" "echo '.screenrc reloaded!'"
+
+# Make F1/F2/F3/F4 act as command keys for tier 1/2/3/4 screens.
+register 1 ^A
+register 2 ^Aa
+register 3 ^Aaa
+register 4 ^Aaaa
+bindkey -k k1 process 1
+bindkey -k k2 process 2
+bindkey -k k3 process 3
+bindkey -k k4 process 4
+
 #bindkey -d -k kb stuff "\010"
 #bindkey -d -k kb
 #
