@@ -2,7 +2,7 @@
 
 SOURCE_DIR=~/dotstrap
 BACKUP_DIR=~/dotfiles_old
-EXCLUDED_FILES=("dotstrap.sh" "dotstrap_setup.sh" "README.markdown" "LICENSE" )
+EXCLUDED_FILES=("dotstrap.sh" "dotstrap_setup.sh" "README.markdown" "LICENSE" "vim/.netrwhist")
 # All hidden/dotted files are automatically excluded by the ls command line below.
 
 for FILE in `ls $SOURCE_DIR`                  # For all files in the source dir...
