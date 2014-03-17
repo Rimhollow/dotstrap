@@ -8,6 +8,8 @@ fi
 # User specific aliases and functions
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+umask 0002  # Gives g+w, so I don't clutter up shared spaces with untouchable files.
+            # Might not be desireable on all systems!
 
 # Created with Halloween Bash Profile Generator. http://xta.github.io/HalloweenBash/
 function parse_git_branch {
