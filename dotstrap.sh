@@ -24,4 +24,4 @@ do
 done
 
 # Perform any additional tasks needed to make the new dotfiles work correctly.
-$SOURCE_DIR/dotstrap_setup.sh
+$SOURCE_DIR/dotstrap_finish.sh
